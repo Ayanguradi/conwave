@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-nv9qwtq#ya71r(#drf4!yli40%tg@r*x7^)w8a292)jq%%#6*p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS =[]
 
 
@@ -61,6 +61,7 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -173,6 +174,8 @@ EMAIL_HOST_PASSWORD = 'bfnw vbxi isrc dlyd'  # Replace with your actual Gmail pa
 DEFAULT_FROM_EMAIL = 'your_email@gmail.com'
 
 
-
-STATICFILES_DIRS =os.path.join(BASE_DIR, "static"),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build','static') 
+STATIC_ROOT = 'staticfiles'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_DIRS =os.path.join(BASE_DIR, "static"),
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build','static') 
