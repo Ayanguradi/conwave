@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+<!-- -------hero section--------- -->
+<div class="hero-header" style="background-image: url('{{ hero_header.image.url }}');">
+    <div class="overlay"></div>
+    <div class="container px-lg-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <h1 class="text-white mb-3 animated slideInDown" style="color: #FFFFFF;">{{ hero_header.heading }}</h1>
+                <p class="text-white pb-3 animated slideInDown" style="color: #FFFFFF;">{{ hero_header.paragraph }}</p>
+                <!-- <a href="#contact" style="background-color: #0F7DC5; color: white;"
+                    class="btn  py-sm-3 px-sm-5 rounded-pill animated slideInRight fs-5">Contact Us</a> -->
+                <button type="button" class="main-btn-rect  popup-btn  nav-item nav-link px-5 py-3"
+                    data-popup="popup-reg">Contact Us</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- ----------scrolled top services-------- -->
+<div class="container-fluid text-center" style="background-color: black;">
+    {% for service in top_services %}
+    <section class="container first py-4">
+        <div class="row">
+            <div class="col-12 col-md-6 text">
+                <h2>{{ service.name }}</h2>
+                <p>{{ service.description|safe }}</p>
+            </div>
+            <div class="col-12 col-md-6 image" style="background-image: url('{{ service.image.url }}');">
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+</div>
+
+
+<!-- ---------------About us ---------------- -->
+<div class="my-4" style="background-color:#dee2e6;;">
+    <div class="container-xxl py-5" style="background-color: #dee2e6;">
+        <div class="container py-5 px-lg-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp gray" data-wow-delay="0.1s">
+                    <h1 class="mb-5 " style="color: black;">Platform for All Digital Solutions</h1>
+                    <p class="mb-4 gray" style="color: gray;">CONWAVE: Your Premier Destination for Digital Excellence
+                    </p>
+                    <p class="mb-4 gray">We proudly position ourselves as the #1 platform for all your digital
+                        solutions. Our comprehensive suite of services is designed to address every aspect of your
+                        digital needs, ensuring that your business thrives in today’s fast-paced and ever-evolving
+                        technological landscape.</p>
+
+                    <a href="{% url 'service_page' %}" class="btn py-sm-3 px-sm-5 rounded-pill mt-3"
+                        style="background-color:black; color: white;">Read More</a>
+                </div>
+
+                <div class="col-lg-6 ">
+                    <img class="img-fluid wow zoomIn" id="abt"  data-wow-delay="0.5s" src="{% static 'main/img/about.png' %}">
+
+                    <div class="main-container">
+                        <div class="main">
+                            <div class="big-circle">
+                                <div class="icon-block">
+                                    <img src="{% static 'main/img/icons8-flutter.png' %}" />
+                                </div>
+                                <div class="icon-block">
+                                    <img src="{% static 'main/img/icons8-adobe-48.png' %}" alt="game design icon" />
+                                </div>
+                                <div class="icon-block">
+                                    <img src="{% static 'main/img/icons8-java-188.png' %}" alt="game dev icon" />
+                                </div>
+                                <div class="icon-block">
+                                    <img src="{% static 'main/img/icons8-jetbrains-48.png' %}" alt="ui-ux icon" />
+                                </div>
+                            </div>
+                            <div class="circle">
+                                <div class="icon-block">
+                                    <img src="{% static 'main/img/icons8-microsoft-48.png' %}" alt="app icon" />
+                                </div>
+                                <div class="icon-block">
+                                    <img src="{% static 'main/img/icons8-google-cloud-48.png' %}"
+                                        alt="blockchain icon" />
+                                </div>
+                                <div class="icon-block">
+                                    <img src="{% static 'main/img/icons8-amazon-aws-24.png' %}" alt="ar-vr icon" />
+                                </div>
+                                <div class="icon-block">
+                                    <img src="{% static 'main/img/icons8-salesforce-48.png' %}"
+                                        alt="artificial intelligence icon" />
+                                </div>
+                            </div>
+                            <div class="center-logo">
+                                <img src="{% static 'main/img/CONWAVE.png' %}" alt="logo" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ------------Service start--------------------------- -->
+
+<div class="wow fadeInUp p-4" data-wow-delay="0.1s">
+    <h1 class="text-center mb-5" style="color: #FFFFFF">Our Suite Of Solutions Includes</h1>
+</div>
+<div class="cards p-4">
+    {% for cards in services %}
+    <div class="card-wrap" style="height: 230px; ">
+        <a href="{% url 'service_detail' cards.pk %}" style="text-decoration: none;">
+            <div class="ser-card" style="overflow: hidden;">
+                <img src="{{ cards.icon.url }}" style="border-style: none;">
+            </div>
+            <div class="card-content">
+                <h1 class="card-title" style="color: black;">{{ cards.name }}</h1>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+</div>
+
+<!-- start---------------------------Projects---------------------- -->
+<div style="background-color: white" id="projects">
+    <div class="container-xxl py-5">
+        <div class="container py-5 px-lg-5">
+            <div class="wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="text-center mb-5" style="color: black;">Recently Completed Projects</h1>
+            </div>
+
+            <div class="row g-4 portfolio-container">
+
+                {% for project in projects %}
+                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="rounded overflow-hidden">
+                        <div class="position-relative overflow-hidden"
+                            style="height: 250px;background-color: black; object-fit: cover;">
+                            <img class="img-fluid" src="{{ project.image.url }}" style="object-fit: cover;">
+                            <div class="portfolio-overlay">
+                                <a class="btn btn-square btn-outline-light " href="{{ project.image.url }}"
+                                    data-lightbox="portfolio"><i class="fa fa-eye "></i></a>
+                                <a class="btn btn-square btn-outline-light mx-1" href="{{ project.link }}"><i
+                                        class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                        <div class="bg-proj p-4">
+                            <p class="skycol fw-medium fs-6 mb-2">{{ project.description }}</p>
+                            <h5 class="lh-base mb-0 whtcol">{{ project.title }}</h5>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Testimonial Start -->
+<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container py-5 px-lg-5">
+        <h1 class="text-center mb-5 whtcol">Client Testimonials and Experiences</h1>
+        <div class="owl-carousel testimonial-carousel" >
+
+            {% for testimonial in testimonials %}
+            <!-- <div class="col-lg-4 col-md-6"> -->
+            <div class="testimonial-item bg-light rounded my-4" >
+                <p class="fs-5" style="color: black; min-height: 300px;" ><i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3"></i>
+                    {{ testimonial.content|safe }}
+                </p>
+                <div class="d-flex align-items-center">
+                    <img class="img-fluid flex-shrink-0 rounded-circle" src="{{ testimonial.image.url }}"
+                        style="width: 65px; height: 65px;">
+                    <div class="ps-4">
+                        <h5 class="mb-1">{{ testimonial.client_name }}</h5>
+                        <span style="color: black;">{{ testimonial.profession }}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- </div> -->
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Testimonial End -->
+<!-- Teamwork Section -->
+<div data-wow-delay="0.1s">
+    <div class="container-xxl py-5" >
+        <img src="{{ teamwork.image.url }}"  width="100%">
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog - DGital{% endblock %}
+
+{% block content %}
+
+<!-- -------hero section--------- -->
+
+<div class="hero-blogs" style="background-image: url({{ hero.background_image.url }});">
+    <div class="overlay"></div>
+    <div class="container px-lg-5">
+        <div class="row g-5 align-items-center">
+            <!-- <div class="col-lg-6 text-lg-start"> -->
+                <div class="col-lg-6 my-auto align-items-center">
+                <h1 class="text-white mb-4 animated slideInDown">{{ hero.title }}</h1>
+                <p class="text-white pb-3 animated slideInDown">{{ hero.description }}</p>
+                <a href="#contact" style="background-color: #0F7DC5; color: white;"
+                    class="btn py-sm-3 px-sm-5 rounded-pill animated slideInRight fs-5">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- ----------blog posts-------- -->
+<div style="background-color: white; width: 100%;" class="py-4">
+    <div class="container-xxl py-2">
+        <div class="row py-4">
+            {% for blog in blogs %}
+            <div class="col-lg-4 col-md-6 px-3 mb-4" >
+                <div class="card">
+                    <img class="card-img-top" src="{{ blog.thumbnail.url }}" alt="{{ blog.title }}"
+                        style="height: 320px; width: 100%;">
+                    <div class="card-body" style="height: 140px;">
+                        <h5 class="card-title">{{ blog.title | truncatechars:90}}</h5>
+             
+
+                    </div>
+                    <div class="card-footer ">
+                        <p style="color: gray;">{{ blog.date_posted }}</p>
+                        <a href="{{ blog.get_absolute_url }}" class="btn btn-dark text-center ">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}DGital - Digital Agency{% endblock %}</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicon -->
+  {% load static %}
+  <link href="{% static 'main/img/CONWAVE.png' %}" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="{% static 'main/css/lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/css/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/css/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'main/css/gsap.css' %}" rel="stylesheet">
+
+  <!-- -----responsive gsap animation------ -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- -----------------About header flip animation------------------ -->
+  <link rel="stylesheet" href="https://codepen.io/GreenSock/pen/xxmzBrw/fcaef74061bb7a76e5263dfc076c363e.css">
+
+  <style>
+    @media (max-width: 600px){
+      .main{
+        display: none;
+      }
+      #abt{
+        display: block;
+      }
+      
+      .main-container {
+        position: absolute;
+      }
+}
+@media(min-width:601px){
+  .main{
+        display: block;
+      }
+      #abt{
+        display: none;
+      }
+}
+/* ------conwave text animation--------------- */
+@media(max-width:800px){
+  .container-abt.final .for, .container-abt.final .gsap {
+      display: none;
+    }
+}
+    .main-container {
+      min-height: 100vh;
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+      -webkit-align-items: center;
+      height: 560px;
+      overflow: hidden;
+    }
+
+    .main {
+      margin: 0px auto;
+      width: 480px;
+      height: 480px;
+      position: relative;
+    }
+
+    .big-circle {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      border: 3px solid black;
+      border-radius: 50%;
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+      -webkit-align-items: center;
+      justify-content: center;
+      -webkit-justify-content: center;
+      animation: Rotate 20s linear infinite;
+      -webkit-animation: Rotate 20s linear infinite;
+    }
+
+    .icon-block {
+      width: 64px;
+      height: 64px;
+      position: absolute;
+      border-radius: 50%;
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+      -webkit-align-items: center;
+      justify-content: center;
+      -webkit-justify-content: center;
+      background-color: black;
+      -webkit-background-image: linear-gradient(180deg, #4967e6 0%, #627bf4 100%);
+      box-shadow: 0 2px 4px 0 #3e5ada;
+      -webkit-box-shadow: 0 2px 4px 0 #3e5ada;
+    }
+
+    .icon-block img {
+      margin: 0px auto;
+      width: 86%;
+      animation: Rotate-reverse 20s linear infinite;
+      -webkit-animation: Rotate-reverse 20s linear infinite;
+    }
+
+    .icon-block:first-child {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+    }
+
+    .icon-block:nth-child(2) {
+      top: 50%;
+      right: 0;
+      transform: translate(50%, -50%);
+      -webkit-transform: translate(50%, -50%);
+    }
+
+    .icon-block:nth-child(3) {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      -webkit-transform: translate(-50%, 50%);
+    }
+
+    .icon-block:nth-child(4) {
+      top: 50%;
+      left: 0;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+    }
+
+    /* circle content */
+    .circle {
+      animation: circle-rotate 20s linear infinite;
+      -webkit-animation: circle-rotate 20s linear infinite;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      -webkit-transform: translate(-50%, -50%) rotate(45deg);
+      width: 75%;
+      height: 75%;
+      border: 3px solid black;
+      border-radius: 50%;
+      background-color: black;
+    }
+
+    .circle .icon-block img {
+      animation: img-rotate 20s linear infinite;
+      -webkit-animation: img-rotate 20s linear infinite;
+    }
+
+    /* center logo */
+    .center-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+    }
+
+    .center-logo img {
+      max-width: 200px;
+    }
+
+    /* keyframe animation */
+
+    @keyframes Rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes Rotate {
+      from {
+        -webkit-transform: rotate(0deg);
+      }
+
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes Rotate-reverse {
+      from {
+        transform: rotate(360deg);
+      }
+
+      to {
+        transform: rotate(0deg);
+      }
+    }
+
+    @-webkit-keyframes Rotate-reverse {
+      from {
+        -webkit-transform: rotate(360deg);
+      }
+
+      to {
+        -webkit-transform: rotate(0deg);
+      }
+    }
+
+    @keyframes circle-rotate {
+      from {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      to {
+        transform: translate(-50%, -50%) rotate(405deg);
+      }
+    }
+
+    @-webkit-keyframes circle-rotate {
+      from {
+        -webkit-transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      to {
+        -webkit-transform: translate(-50%, -50%) rotate(405deg);
+      }
+    }
+
+    @keyframes img-rotate {
+      from {
+        transform: rotate(-45deg);
+      }
+
+      to {
+        transform: rotate(-405deg);
+      }
+    }
+
+    @-webkit-keyframes img-rotate {
+      from {
+        -webkit-transform: rotate(-45deg);
+      }
+
+      to {
+        -webkit-transform: rotate(-405deg);
+      }
+    }
+
+    /* -------------------About Company logo slider------------- */
+
+    .logo-slider {
+      overflow: hidden;
+      padding: 30px 0 0 0;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .logo-slider:hover .logos-slide {
+      animation-play-state: paused;
+    }
+
+    .logos-slide {
+      display: inline-block;
+      animation: 45s slide infinite linear;
+    }
+
+    .logos-slide img {
+      width: 183px;
+      height: 83px;
+      margin: 0 40px;
+    }
+
+
+    @keyframes slide {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+
+    /* -----------------servicepage------------- */
+    .spacer {
+      width: 100%;
+      height: 30vh;
+      background: black;
+    }
+
+    .gallery h1 {
+      font-size: clamp(2em, 4vw, 6em);
+    }
+
+    .gallery p {
+      /* font-size:clamp(1.4em, 2.5vw, 3.5em); */
+      font-size: clamp(1rem, 0.8594rem + 0.75vw, 1.375rem);
+      line-height: 1.4;
+    }
+
+
+    .gallery {
+      display: flex;
+      /* outline:0px solid red; */
+    }
+
+    .left {
+      width: 50%;
+    }
+
+    .right {
+      height: 100vh;
+      /* outline:1px solid purple; */
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .desktopContent {
+      margin: auto;
+      width: 80%;
+    }
+
+    .desktopContentSection {
+      min-height: 100vh;
+      /* outline:1px solid green; */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+
+    .desktopPhotos {
+      width: 40vw;
+      height: 40vw;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .desktopPhoto {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .red {
+      background-image: url(https://img.freepik.com/free-vector/mobile-application-development-programming-languages-css-html-it-ui-male-programmer-cartoon-character-developing-website-coding_335657-2367.jpg?size=626&ext=jpg&ga=GA1.1.1012721476.1720277002&semt=ais_hybrid);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .green {
+      background-image: url(https://img.freepik.com/free-photo/medium-shot-man-wearing-vr-glasses_23-2149126949.jpg?ga=GA1.1.1012721476.1720277002&semt=ais_hybrid);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .blue {
+      background: dodgerblue;
+    }
+
+    .pink {
+      background: deepPink;
+    }
+
+
+    /* small screen / mobile layout */
+    .mobileContent {
+      display: none;
+      width: 80vw;
+    }
+
+    .mobilePhoto {
+      width: 80vw;
+      height: 80vw;
+      margin-top: 5em;
+      border-radius: 6vw;
+    }
+
+    .mbl{
+        display: none;
+        position: absolute;
+      }
+    /* defines styles for screens up to 599px wide */
+    @media screen and (max-width: 599px) {
+      .left {
+        display: none;
+      }
+
+      .right {
+        /* height: 100%; */
+        width: 100%;
+        align-items: center;
+      }
+
+      .desktopPhotos {
+        display: none;
+      }
+
+      /* .mobileContent {
+        display: block;
+      } */
+      .mbl{
+        display: block;
+        position: relative;
+      }
+
+      .gallery{
+        position: absolute;
+      }
+      .spacer{
+        height: 10vh;
+      }
+
+    }
+
+
+    /* ----------------infinite horizontal scroll stack tech scroll----------- */
+    .scroller {
+      max-width: 1000px;
+    }
+
+    .scroller__inner {
+      padding-block: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .scroller[data-animated="true"] {
+      overflow: hidden;
+      -webkit-mask: linear-gradient(90deg,
+          transparent,
+          white 20%,
+          white 80%,
+          transparent);
+      mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    }
+
+    .scroller[data-animated="true"] .scroller__inner {
+      width: max-content;
+      flex-wrap: nowrap;
+      animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
+    }
+
+    .scroller[data-direction="right"] {
+      --_animation-direction: reverse;
+    }
+
+    .scroller[data-direction="left"] {
+      --_animation-direction: forwards;
+    }
+
+    .scroller[data-speed="fast"] {
+      --_animation-duration: 20s;
+    }
+
+    .scroller[data-speed="slow"] {
+      --_animation-duration: 60s;
+    }
+
+    @keyframes scroll {
+      to {
+        transform: translate(calc(-50% - 0.5rem));
+      }
+    }
+
+    /* general styles */
+
+    :root {
+      --clr-neutral-100: hsl(0, 0%, 100%);
+      --clr-primary-100: hsl(205, 15%, 58%);
+      --clr-primary-400: hsl(215, 25%, 27%);
+      --clr-primary-800: hsl(217, 33%, 17%);
+      --clr-primary-900: hsl(218, 33%, 9%);
+    }
+
+
+
+    .tag-list {
+      margin: 0;
+      padding-inline: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      padding: 1rem;
+      background: var(--clr-primary-400);
+      border-radius: 0.5rem;
+      box-shadow: 0 0.5rem 1rem -0.25rem var(--clr-primary-900);
+    }
+
+
+    /* -------grad text---------- */
+.gradient-text-1 {
+ background: linear-gradient(to right, #C33764, #1D2671);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;  
+}
+
+/* <!-- ------------------each service image pinned scroll------------------------------------ --> */
+.headline {
+	background:#2D4E86;
+	border-radius:6px;
+	height:4em;
+	width:100%;
+}
+
+/* .es-text {
+	margin:0.8em 0 0 0;
+	background:#2D4E86;
+	border-radius:6px;
+	height:1em;
+	width:100%;
+} */
+
+
+.gallery {
+  display:flex;	
+  /* outline:1px solid red; */
+}
+
+.left {
+	width:50%;
+}
+
+.detailsWrapper {
+	margin:auto;
+	width:80%;
+}
+
+.details {
+	height:100vh;
+	outline:1px solid green;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+}
+
+
+.right {
+	/* outline:1px solid purple; */
+	width:50%;
+	height:100vh;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+}
+
+.photos {
+	width:40vw;
+	height:40vw;
+	background:maroon;
+}
+
+
+
+
+  </style>
+
+
+</head>
+
+<body style="background-color: black;">
+  <!-- Spinner Start -->
+  <div id="spinner"
+    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <!-- Spinner End -->
+
+  <!-- Navbar Start -->
+  <div class=" position-relative p-0">
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: black; padding: 18px;">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <img src="{% static 'main/img/CONWAVE.png' %}" alt="Conwave Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="fa fa-bars whtcol"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+          <div class="navbar-nav ml-auto" style="font-size: 22px;">
+            <a href="{% url 'about' %}"
+              class="nav-item nav-link px-4 {% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a>
+            <a href="{% url 'service_page' %}"
+              class="nav-item nav-link px-4 {% if request.resolver_match.url_name == 'service_page' %}active{% endif %}">Services</a>
+            <a href="{% url 'home' %}#projects"
+              class="nav-item nav-link px-4 {% if request.resolver_match.url_name == 'home' and request.path == '/#projects' %}active{% endif %}">Projects</a>
+            <a href="{% url 'blog_list' %}"
+              class="nav-item nav-link px-4 {% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}">Blogs</a>
+            <!-- <a href="#popup-reg" class="btn btn-custom rounded-pill py-2 px-4 ms-3 d-none d-lg-block fs-5"
+              style="background-color: #0F7DC5; color: white;">Contact Us</a> -->
+
+            <button type="button" class="main-btn-rect  popup-btn  nav-item nav-link px-4 "
+              data-popup="popup-reg">Contact Us</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- -------contact popup---------- -->
+    <div id="popup-reg" class="popup">
+      <div class="popup-content">
+        <div class="event-header">
+          <h6>Connect With Us</h6>
+        </div>
+
+        <div class="position-relative w-100 mt-3">
+          <form name="contact-form" id="contactForm" method="post">
+            {% csrf_token %}
+            <input class="form-control border-1 w-100 ps-4 pe-5 my-2" type="text" name="name" placeholder="Your Name"
+              style="height: 38px;" required>
+            <select name="countryCode" class="form-control border-1 w-100 ps-4 pe-5 my-2" style="width: 100%;" required>
+              <option data-countryCode="IN" value="91" selected>India (+91)</option>
+              <option data-countryCode="GB" value="44">UK (+44)</option>
+              <optgroup label="Other countries">
+                <option data-countryCode="DZ" value="213">Algeria (+213)</option>
+                <option data-countryCode="AD" value="376">Andorra (+376)</option>
+                <option data-countryCode="AO" value="244">Angola (+244)</option>
+              </optgroup>
+            </select>
+            <input class="form-control border-1 w-100 ps-4 pe-5 my-2" id="phone" type="tel"
+              pattern="[0-9]{3}[0-9]{3}[0-9]{4}" name="phone" placeholder="Contact Number" style="height: 38px;"
+              required>
+            <textarea id="subject" class="form-control border-1 w-100 ps-4 pe-5 my-2" name="subject"
+              placeholder="Write message.." style="height:50px" required></textarea>
+            <input class="form-control border-1 w-100 ps-4 pe-5" type="email" name="email" placeholder="Your Email"
+              style="height: 38px;" required>
+              <button type="submit" onclick="close()" class="bg-primary nav-item nav-link px-4 mt-2 mx-auto">Submit</button>
+            <!-- <button type="submit" class=" btn shadow-none position-absolute bottom-0 end-0 mt-1 me-2"><i
+                class="fa fa-paper-plane text-primary fs-4"></i></button> -->
+          </form>
+        </div>
+
+        <span class="fade-out main-btn-circle">╳</span>
+      </div>
+    </div>
+
+
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer Start -->
+    <div class="container-fluid text-light footer wow fadeIn" id="contact" data-wow-delay="0.1s">
+      <div class="container  px-lg-5 pb-2">
+        <div class="row g-5">
+
+          <!-- Details Section -->
+          <div class="col-md-6 col-lg-4">
+            <p class="section-title text-white h5 mb-4">Address</p>
+            <p><i class="fa fa-map-marker-alt me-3" style="color: white;"></i>{{ details.address }}</p>
+            <p><i class="fa fa-phone-alt me-3"></i>{{ details.phone }}</p>
+            <p><i class="fa fa-envelope me-3"></i>{{ details.email }}</p>
+            <div class="d-flex pt-2">
+              <a class="btn btn-outline-light btn-social" href="{{ details.twitter }}"><i
+                  class="fab fa-twitter"></i></a>
+              <a class="btn btn-outline-light btn-social" href="{{ details.facebook }}"><i
+                  class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-outline-light btn-social" href="{{ details.instagram }}"><i
+                  class="fab fa-instagram"></i></a>
+              <a class="btn btn-outline-light btn-social" href="{{ details.linkedin }}"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <!-- ----------------------quick links--------------------- -->
+          <div class="col-md-6 col-lg-4">
+            <p class="section-title text-white h5 mb-4">Quick Link</p>
+            <a class="btn btn-link" href="service/1/">About Us</a>
+            <a class="btn btn-link" href="">Contact Us</a>
+            <a class="btn btn-link" href="">Privacy Policy</a>
+            <a class="btn btn-link" href="">Terms & Condition</a>
+            <a class="btn btn-link" href="">Career</a>
+          </div>
+
+          <!-- ----------------------Services--------------------- -->
+          <div class="col-md-6 col-lg-4">
+            <p class="section-title text-white h5 mb-4">Services</p>
+          {% for cards in services %}
+          <a href="{% url 'service_detail' cards.pk %}" style="text-decoration: none;">
+            <!-- <div class="card-content"> -->
+                <p class="btn btn-link">{{ cards.name }}</p>
+            <!-- </div> -->
+           </a>
+          {% endfor %}
+           </div>
+        </div>
+      </div>
+      
+      
+      <!-- ----------------------copy right----------------- -->
+      <div class="container px-lg-5 text-center">
+        <div class="copyright  ">
+          <div class="text-center mb-3 mb-md-0">
+            &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+            Designed By <a class="border-bottom" href="">Ayan Guradi</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+  <!-- Footer End -->
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="{% static 'main/css/lib/wow/wow.min.js' %}" rel="stylesheet"></script>
+  <script src="{% static 'main/css/lib/easing/easing.min.js' %}" rel="stylesheet"></script>
+  <script src="{% static 'main/css/lib/waypoints/waypoints.min.js' %}" rel="stylesheet"></script>
+  <script src="{% static 'main/css/lib/counterup/counterup.min.js' %}" rel="stylesheet"></script>
+  <script src="{% static 'main/css/lib/owlcarousel/owl.carousel.min.js' %}" rel="stylesheet"></script>
+  <script src="{% static 'main/css/lib/isotope/isotope.pkgd.min.js' %}" rel="stylesheet"></script>
+  <script src="{% static 'main/css/lib/lightbox/js/lightbox.min.js' %}" rel="stylesheet"></script>
+
+  <!-- -----modified---- -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="{% static 'main/js/main.js' %}"></script>
+  <script src="{% static 'main/js/gsap.js' %}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <!-- -----------------About header flip animation------------------ -->
+  <script src="https://assets.codepen.io/16327/gsap-latest-beta.min.js"></script>
+  <script src="https://assets.codepen.io/16327/Flip.min.js"></script>
+  <script>
+    gsap.registerPlugin(Flip);
+
+    let layouts = ["final", "plain", "columns", "grid"],
+      container = document.querySelector(".container-abt"),
+      curLayout = 0; // index of the current layout
+
+    function nextState() {
+      const state = Flip.getState(".letter, .for, .gsap", { props: "color,backgroundColor", simple: true }); // capture current state
+
+      container.classList.remove(layouts[curLayout]); // remove old class
+      curLayout = (curLayout + 1) % layouts.length;   // increment (loop back to the start if at the end)
+      container.classList.add(layouts[curLayout]);    // add the new class
+
+      Flip.from(state, { // animate from the previous state
+        absolute: true,
+        stagger: 0.07,
+        duration: 0.7,
+        ease: "power2.inOut",
+        spin: curLayout === 0, // only spin when going to the "final" layout
+        simple: true,
+        onEnter: (elements, animation) => gsap.fromTo(elements, { opacity: 0 }, { opacity: 1, delay: animation.duration() - 0.1 }),
+        onLeave: elements => gsap.to(elements, { opacity: 0 })
+      });
+
+      gsap.delayedCall(curLayout === 0 ? 3.5 : 1.5, nextState);
+    }
+
+    gsap.delayedCall(1, nextState);
+  </script>
+
+
+  <!-- ------Contact from------ -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      fetch("{% url 'send_email' %}", {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: formData
+      }).then(response => response.json())
+        .then(data => {
+          const formMessage = document.getElementById('formMessage');
+          if (data.success) {
+            // formMessage.innerHTML = '<div class="alert alert-success">Your form has been successfully sent!</div>';
+            alert("Your form has been successfully sent!")
+          } else {
+            // formMessage.innerHTML = '<div class="alert alert-danger">There was an error sending your form. Please try again.</div>';
+            alert("There was an error sending your form. Please try again.")
+          }
+        }).catch(error => {
+          const formMessage = document.getElementById('formMessage');
+          // formMessage.innerHTML = '<div class="alert alert-danger">There was an error sending your form. Please try again.</div>';
+          alert("There was an error sending your form. Please try again.")
+        });
+    });
+  </script>
+  <!-- /* -------------------About Company logo slider------------- * -->
+  <script>var copy = document.querySelector(".logos-slide").cloneNode(true);
+    document.querySelector(".logo-slider").appendChild(copy);</script>
+
+
+
+  <!-- //------------------------service page--------------------------- -->
+  <script>
+    const details = gsap.utils.toArray(".desktopContentSection:not(:first-child)")
+    const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)")
+
+
+    gsap.set(photos, { yPercent: 101 })
+
+    const allPhotos = gsap.utils.toArray(".desktopPhoto")
+
+
+    // create
+    let mm = gsap.matchMedia();
+
+    // add a media query. When it matches, the associated function will run
+    mm.add("(min-width: 600px)", () => {
+
+      // this setup code only runs when viewport is at least 600px wide
+      console.log("desktop")
+
+      ScrollTrigger.create({
+        trigger: ".gallery",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".right"
+      })
+
+      //create scrolltrigger for each details section
+      //trigger photo animation when headline of each details section 
+      //reaches 80% of window height
+      details.forEach((detail, index) => {
+
+        let headline = detail.querySelector("h1")
+        let animation = gsap.timeline()
+          .to(photos[index], { yPercent: 0 })
+          .set(allPhotos[index], { autoAlpha: 0 })
+        ScrollTrigger.create({
+          trigger: headline,
+          start: "top 80%",
+          end: "top 50%",
+          animation: animation,
+          scrub: true,
+          markers: false
+        })
+      })
+
+      return () => { // optional
+        // custom cleanup code here (runs when it STOPS matching)
+        console.log("mobile")
+      };
+    });
+  </script>
+
+  <!-- /* ----------------infinite horizontal scroll stack tech scroll----------- */ -->
+  <script>
+    const scrollers = document.querySelectorAll(".scroller");
+    // If a user hasn't opted in for recuded motion, then we add the animation
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      addAnimation();
+    }
+    function addAnimation() {
+      scrollers.forEach((scroller) => {
+        // add data-animated="true" to every `.scroller` on the page
+        scroller.setAttribute("data-animated", true);
+
+        // Make an array from the elements within `.scroller-inner`
+        const scrollerInner = scroller.querySelector(".scroller__inner");
+        const scrollerContent = Array.from(scrollerInner.children);
+
+        // For each item in the array, clone it
+        // add aria-hidden to it
+        // add it into the `.scroller-inner`
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true);
+          duplicatedItem.setAttribute("aria-hidden", true);
+          scrollerInner.appendChild(duplicatedItem);
+        });
+      });
+    }
+  </script>
+
+
+  <!-- -----------contact popup-------- -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"
+    integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj+KsslFkCOt3TvJrX2AV/Gc3wOqA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Sticky Navbar
+      window.addEventListener('scroll', function () {
+        let navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      // Popup Form
+      document.querySelectorAll('.popup-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+          document.querySelector(`#${this.dataset.popup}`).classList.add('active');
+        });
+      });
+      document.querySelectorAll('.fade-out').forEach(closeBtn => {
+        closeBtn.addEventListener('click', function () {
+          this.closest('.popup').classList.remove('active');
+        });
+      });
+      window.addEventListener('click', function (e) {
+        if (e.target.classList.contains('popup')) {
+          e.target.classList.remove('active');
+        }
+      });
+    });
+
+  </script>
+
+<!-- -------close contact form-------------- -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Clear input fields
+        this.reset();
+    });
+});
+
+</script>
+
+<!-- /* ------------ABOUT PRODUCTS------------------------------- */ -->
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  const accordions = document.querySelectorAll('.accordion');
+
+  accordions.forEach((accordion, i) => {
+    gsap.from(accordion.querySelector('.prdtext'), {
+      height: 0,
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: accordion,
+        start: 'top center',
+        toggleActions: 'play none none reverse',
+        onEnter: () => {
+          gsap.to(accordion.querySelector('.prdtext'), { height: 'auto', opacity: 1 });
+        },
+        onLeaveBack: () => {
+          gsap.to(accordion.querySelector('.prdtext'), { height: 0, opacity: 0 });
+        }
+      }
+    });
+  });
+</script>
+<!-- ------------------each service image pinned scroll------------------------------------ -->
+<script>
+  ScrollTrigger.create({
+    trigger:".gallery",
+    start:"top top",
+    end:"bottom bottom",
+    pin:".right"
+  })
+  </script>
+</body>
+
+</html>
