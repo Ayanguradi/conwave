@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-nv9qwtq#ya71r(#drf4!yli40%tg@r*x7^)w8a292)jq%%#6*p
 DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app']
+# ALLOWED_HOSTS =[]
 
 
 # Application definition
@@ -96,17 +97,22 @@ WSGI_APPLICATION = 'ITSolutions.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "mydb",
+#         "USER":"root",
+#         "PASSWORD": "root",
+#         "HOST": "127.0.0.1",
+#         "PORT": "3306",
+#     }
+# }
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "mydb",
-        "USER":"root",
-        "PASSWORD": "root",
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -148,8 +154,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
 #custom
-STATICFILES_DIRS = [BASE_DIR / 'main/static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATICFILES_DIRS = [BASE_DIR / 'main/static']
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -165,3 +171,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ayanguradi2@gmail.com'
 EMAIL_HOST_PASSWORD = 'bfnw vbxi isrc dlyd'  # Replace with your actual Gmail password
 DEFAULT_FROM_EMAIL = 'your_email@gmail.com'
+
+
+
+STATICFILES_DIRS =os.path.join(BASE_DIR, "static"),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build','static') 
