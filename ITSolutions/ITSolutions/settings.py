@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-nv9qwtq#ya71r(#drf4!yli40%tg@r*x7^)w8a292)jq%%#6*p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 # ALLOWED_HOSTS =[]
 
 
@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'ITSolutions.wsgi.application'
 #         "NAME": "mydb",
 #         "USER":"root",
 #         "PASSWORD": "root",
-#         "HOST": "127.0.0.1",
+#         "HOST": "127.0.0.1",   
 #         "PORT": "3306",
 #     }
 # }
